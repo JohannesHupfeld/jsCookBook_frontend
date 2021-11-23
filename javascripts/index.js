@@ -2,8 +2,10 @@ const recipesUrl = "http://localhost:3000/api/v1/recipes"
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchRecipes()
+  // recipeForm()
 })
 
+// get function
 function fetchRecipes() {
   fetch(recipesUrl) //returns a promise
   .then(resp => resp.json()) //parees that promise to json
@@ -21,7 +23,7 @@ function fetchRecipes() {
           <p>${recipe.attributes.category.name}</p>
         </div>
       `
-      document.querySelector('#recipe_container').innerHTML += renderRecipe
+      document.querySelector('#recipe-container').innerHTML += renderRecipe
       
     })
   })
