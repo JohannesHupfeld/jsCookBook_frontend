@@ -43,11 +43,11 @@ function handleRecipeSubmit(e) {
 }
 
 function postRecipe(name, ingredients, instructions, image_url, category_id) {
-  const recipeData = {name, ingredients, instructions, image_url, category_id}
+  const fetchData = {name, ingredients, instructions, image_url, category_id}
   fetch(recipesUrl, {
     method: "POST",
     headers: {"Content-Type": 'application/json'},
-    body: JSON.stringify({recipeData})
+    body: JSON.stringify({fetchData})
   })
   .then(resp => resp.json())
   .then(recipe => {
