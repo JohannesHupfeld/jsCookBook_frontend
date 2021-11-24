@@ -9,8 +9,39 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 <body>
-  <div id="recipe-container"></div>
-  
+  <div class="form-container">
+    <form id="create-recipe-form">
+      <h3>Create a New Recipe</h3>
+      <input id="input-name" type="text" name="name" value="" placeholder="Recipe name..." class="input-text">
+      <br><br>
+      <textarea id="input-ingredients" name="ingredients" cols="60" rows="5" placeholder="Recipe ingredients..."></textarea>
+      <br><br>
+      <textarea id="input-instructions" name="instructions" cols="60" rows="5" placeholder="Recipe instructions..."></textarea>
+      <br><br>
+      <input id="input-url" type="text" name="image" value="" placeholder="Image url..." class="input-text">
+      <br>
+      <p>Choose a Category</p>
+      <select id="categories" name="categories">
+        <option value="1">American</option>
+        <option value="2">French</option>
+        <option value="3">Italian</option>
+        <option value="4">Chinese</option>
+        <option value="5">Korean</option>
+        <option value="6">Indian</option> 
+        <option value="7">Thai</option>
+        <option value="8">Mexican</option>
+        <option value="9">Vegetarian</option>
+        <option value="10">Vegan</option>
+      </select>
+      <br><br>
+      <input id="create-button" type="submit" name="submit" value="Create" class="submit">
+    </form>
+  </div>
+  <div id="recipe-container">
+  </div>
+  <div id="footer">
+    <a href="#top" id="scroll-back "><i class="fas fa-2x fa-arrow-alt-circle-up"></i></a>
+  </div>
 </body>
   <script type="text/javascript" src="javascripts/index.js"></script>
 </html>
