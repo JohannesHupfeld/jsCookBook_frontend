@@ -1,9 +1,4 @@
 const recipesUrl = "http://localhost:3000/api/v1/recipes"
-const nameInput = document.querySelector('#input-name').value 
-const ingredientsInput = document.querySelector('#input-ingredients').value
-const instructionsInput = document.querySelector('#input-instructions').value 
-const urlInput = document.querySelector('#input-url').value
-const categoryId = parseInt(document.querySelector('#categories').value) // parseInt turns the string into an integer
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchRecipes() 
@@ -39,16 +34,28 @@ function fetchRecipes() {
 
 function handleRecipeSubmit(e) {
   e.preventDefault()
-  const data = {
-    name: nameInput().value,
-    ingredients: ingredientsInput().value,
-    instructions: instructionsInput().value,
-    image_url: urlInput().value,
-    category: categoryId().value
-  }
-  postRecipe()
+  const nameInput = document.querySelector('#input-name').value 
+  const ingredientsInput = document.querySelector('#input-ingredients').value
+  const instructionsInput = document.querySelector('#input-instructions').value 
+  const urlInput = document.querySelector('#input-url').value
+  const categoryId = parseInt(document.querySelector('#categories').value) // parseInt turns the string into an integer
+  postRecipe(nameInput, ingredientsInput, instructionsInput, urlInput, categoryId)
 }
 
-function postRecipe() {
-  
+function postRecipe(name, ingredients, instructions, image_url, category_id) {
+  fetch(recipesUrl, {
+    method: "POST",
+    headers: {"Content-Type": 'application/json'},
+    body: JSON.stringify({
+      name: name,
+      ingredients: ingredients,
+      instructions: instructions,
+      image_url: image_url,
+      category_id: category_id
+    })
+  })
+  .then(resp => resp.json())
+  .then(recipe => {
+    console.log(recipe);
+  })
 }
