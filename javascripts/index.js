@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function fetchRecipes() {
   fetch(recipesUrl) // returns a promise
   .then(resp => resp.json()) // parses that promise to json
-  .then(recipes => {  // returns an array of recipes
+  .then(recipes => { // returns an array of recipes
     recipes.data.forEach(recipe => { // itterates over the response and show the data in a div
       const renderRecipe = `
         <div data-id=${recipe.id}>
@@ -51,7 +51,6 @@ function postRecipe(name, ingredients, instructions, image_url, category_id) {
   })
   .then(resp => resp.json())
   .then(recipe => {
-    debugger
     const recipeData = recipe.data
     // render json response
     const renderRecipe = `
@@ -69,4 +68,5 @@ function postRecipe(name, ingredients, instructions, image_url, category_id) {
       `
     document.querySelector('#recipe-container').innerHTML += renderRecipe
   })
+  .catch
 }
