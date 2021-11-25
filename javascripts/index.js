@@ -43,14 +43,30 @@ function handleRecipeSubmit(e) {
 }
 
 function postRecipe(name, ingredients, instructions, image_url, category_id) {
-  const fetchData = {name, ingredients, instructions, image_url, category_id}
+  const bodyData = {name, ingredients, instructions, image_url, category_id}
   fetch(recipesUrl, {
     method: "POST",
     headers: {"Content-Type": 'application/json'},
-    body: JSON.stringify({fetchData})
+    body: JSON.stringify(bodyData)
   })
   .then(resp => resp.json())
   .then(recipe => {
-    console.log(recipe);
+    debugger
+    const recipeData = recipe.data
+    // render json response
+    const renderRecipe = `
+        <div data-id=${recipe.id}>
+          <h2>${recipeData.attributes.name}</h2>
+          <img src=${recipeData.attributes.image_url} height="200" width="250">
+          <h3>Ingredients:</h3>
+          <p>${recipeData.attributes.ingredients}</p>
+          <h3>Instructions</h3>
+          <p>${recipeData.attributes.instructions}</p>
+          <h3>Category</h3>
+          <p>${recipeData.attributes.category.name}</p>
+          <button data-id="${recipeData.id}">Edit</button>
+        </div>
+      `
+    document.querySelector('#recipe-container').innerHTML += renderRecipe
   })
 }
