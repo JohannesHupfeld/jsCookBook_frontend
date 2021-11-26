@@ -17,6 +17,7 @@ function fetchRecipes() {
      render(recipe)
     })
   })
+  .catch(err => alert(err))
 }
 
 function render(recipe) {
@@ -59,5 +60,5 @@ function postRecipe(name, ingredients, instructions, image_url, category_id) {
     // render json response
     render(recipeData)
   })
-  .catch
+  .catch(err => alert(err))
 }
