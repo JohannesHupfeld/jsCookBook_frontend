@@ -14,28 +14,15 @@ function fetchRecipes() {
   .then(resp => resp.json()) // parses that promise to json
   .then(recipes => { // returns an array of recipes
     recipes.data.forEach(recipe => { // itterates over the response and show the data in a div
-      let newRecipe = new Recipe(recipe, recipe.attributes ) // recipe.attributes is nested under recipe, a top level object
-      render(recipe) 
+      
+      let newRecipe = new Recipe(recipe, recipe.attributes) // recipe.attributes is nested under recipe, a top level object. Correspnds to recipe class constructor
+      
+      document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipe()
+      
+      debugger
     })
   })
   .catch(err => alert(err))
-}
-
-function render(recipe) {
-  const renderRecipe = `
-    <div data-id=${recipe.id}>
-    <h2>${recipe.attributes.name}</h2>
-    <img src=${recipe.attributes.image_url} height="200" width="250">
-    <h3>Ingredients:</h3>
-    <p>${recipe.attributes.ingredients}</p>
-    <h3>Instructions</h3>
-    <p>${recipe.attributes.instructions}</p>
-    <h3>Category</h3>
-    <p>${recipe.attributes.category.name}</p>
-    <button data-id="${recipe.id}">Edit</button>
-    </div>
-  `
-document.querySelector('#recipe-container').innerHTML += renderRecipe
 }
 
 function handleRecipeSubmit(e) {
