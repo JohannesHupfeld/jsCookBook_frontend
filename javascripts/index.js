@@ -14,7 +14,8 @@ function fetchRecipes() {
   .then(resp => resp.json()) // parses that promise to json
   .then(recipes => { // returns an array of recipes
     recipes.data.forEach(recipe => { // itterates over the response and show the data in a div
-     render(recipe)
+      let newRecipe = new Recipe(recipe, recipe.attributes ) // recipe.attributes is nested under recipe, a top level object
+      render(recipe) 
     })
   })
   .catch(err => alert(err))
