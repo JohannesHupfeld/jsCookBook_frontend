@@ -19,7 +19,6 @@ function fetchRecipes() {
       
       document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipe()
       
-      debugger
     })
   })
   .catch(err => alert(err))
@@ -44,9 +43,11 @@ function postRecipe(name, ingredients, instructions, image_url, category_id) {
   })
   .then(resp => resp.json())
   .then(recipe => {
-    const recipeData = recipe.data
+    const recipeData = recipe.data 
     // render json response
-    render(recipeData)
+    let newRecipe = new Recipe(recipeData, recipeData.attributes) 
+      
+    document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipe()
   })
   .catch(err => alert(err))
 }

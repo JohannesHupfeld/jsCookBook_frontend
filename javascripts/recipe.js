@@ -11,7 +11,6 @@ class Recipe { // class recipe is just an object. Syntactic sugar to make it mor
   } 
 
   renderRecipe() {
-    debugger
     return `
     <div data-id=${this.id}>
     <h2>${this.name}</h2>
@@ -22,8 +21,6 @@ class Recipe { // class recipe is just an object. Syntactic sugar to make it mor
     <p>${this.instructions}</p>
     <h3>Category</h3>
     <p>${this.category.name}</p>
-    <button data-id="${this.id}">Edit</button>
-    </div>
   `
   }
 } // this is an instance of recipe class, in debugger under prototype we have access to render
