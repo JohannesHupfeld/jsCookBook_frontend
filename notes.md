@@ -54,3 +54,28 @@ index.html
                 <input type="submit" value="Create">
               </form>
             </div>
+
+
+
+
+
+const deleteRecipe = document.querySelector(`button.delete-button[data-id='${recipe.id}']`)
+deleteRecipe.addEventListener("delete", (e) => handleDelete(e))
+
+function handleDelete(e) {
+  debugger
+    fetch(recipesUrl, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": 'application/json'
+        }
+    })
+    .then(resp => resp.json())
+    .then(json => { debugger
+        e.target.parentNode.remove()
+        alert(json.message)
+    })
+}
+
+  <button data-id="${this.id}">Delete</button>
+    </div>  -----> in render 
