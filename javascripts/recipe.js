@@ -34,7 +34,7 @@ class Recipe { // class template for objects
         let newRecipe = new Recipe(recipe, recipe.attributes) // recipe.attributes is nested under recipe, a top level object. Correspnds to recipe class constructor
         // create a new instance of my reicpe class
         // document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipe() //assigning newRecipe.renderRecipe() to innerHTML
-        //insert adject html
+            // --> above method clears page makes copy and replaces with new --not ideal especially if event listeners were attached to each recipe
         document.querySelector('#recipe-container').insertAdjacentHTML("beforeend", newRecipe.renderRecipe()) // better way
       })
     })
