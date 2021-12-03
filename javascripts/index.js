@@ -44,7 +44,7 @@ const postRecipe = (name, ingredients, instructions, image_url, category_id) => 
     // render json response       ID             attributes 
     let newRecipe = new Recipe(recipeData, recipeData.attributes) 
     // creates a new instance of my recipe class
-    document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipe()
+    document.querySelector('#recipe-container').insertAdjacentHTML("beforeend", newRecipe.renderRecipe())
   })
   .catch(err => alert(err))
 }
