@@ -12,12 +12,20 @@
   <div class="form-container">
     <form id="create-recipe-form">
       <h3>Create a New Recipe</h3>
+      <label for="input-name">Recipe Name</label>
+      <br>
       <input id="input-name" type="text" name="name" value="" placeholder="Recipe name..." class="input-text">
       <br><br>
+      <label for="input-ingredients">Ingredients</label>
+      <br>
       <textarea id="input-ingredients" name="ingredients" cols="60" rows="5" placeholder="Recipe ingredients..."></textarea>
       <br><br>
+      <label for="input-instructions">Instructions</label>
+      <br>
       <textarea id="input-instructions" name="instructions" cols="60" rows="5" placeholder="Recipe instructions..."></textarea>
       <br><br>
+      <label for="input-url">Image URL</label>
+      <br>
       <input id="input-url" type="text" name="image" value="" placeholder="Image url..." class="input-text">
       <br>
       <p>Choose a Category</p>
@@ -38,8 +46,14 @@
       <input id="create-button" type="submit" name="submit" value="Create Recipe" class="submit">
     </form>
   </div>
+  <br>
+  <div id="buttons">
+    <button id="button-show">Show recipes</button>
+  </div>
+  <br>
   <div id="recipe-container">
   </div>
+  </body>
   <div id="footer">
     <a href="#top" id="scroll-back "><i class="fas fa-2x fa-arrow-alt-circle-up"></i></a>
   </div>
