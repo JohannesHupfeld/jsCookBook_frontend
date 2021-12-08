@@ -1,23 +1,11 @@
 const recipesUrl = "http://localhost:3000/api/v1/recipes" // global 
-const buttonShow = () => document.getElementById("button-show")
-const recipeContainer = () => document.getElementById("recipe-container")
- 
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Recipe.fetchRecipes() 
-
-  buttonShow().addEventListener("click", handleClick)
-
+  Recipe.fetchRecipes() 
+    
   const createRecipeForm = document.querySelector("#create-recipe-form")
   createRecipeForm.addEventListener("submit", (e) => handleRecipeSubmit(e))
 })
-
-const handleClick = () => {
-  if (recipeContainer().children.length < 1) {
-    Recipe.fetchRecipes()
-  } else {
-    recipeContainer().innerHTML = ""
-  }
-}
 
 const handleRecipeSubmit = (e) => { // callback to submit form createRecipeForm. grabs all the values for my inputs
   e.preventDefault()  

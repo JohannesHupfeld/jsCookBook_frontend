@@ -77,5 +77,62 @@ function handleDelete(e) {
     })
 }
 
-  <button data-id="${this.id}">Delete</button>
-    </div>  -----> in render 
+  <button data-id="${this.id}">Delete</button>  -----> in render 
+
+
+
+const deleteBttn = document.createElement("button");
+
+deleteBttn.className = "delete-bttn";
+		deleteBttn.textContent = "Delete";
+		deleteBttn.addEventListener("click", () => deleteRecipe(recipe));
+
+function deleteRecipe(recipe) {
+debugger
+  const configObj = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }
+
+  fetch(`http://localhost:3000/api/v1/recipes/${recipe.id}`, configObj)
+  .then(resp => resp.json())
+  .catch(error => console.error('ERROR:', error))
+  // ❗ should return an empty JS object (if deleted successfully)
+  .then(deletedRecipe => { 
+    console.log(deletedRecipe);
+    
+    // make DOM changes only after successful deletion
+    recipe.remove();
+  });
+}
+
+
+
+
+const buttonShow = () => document.getElementById("button-show")
+const recipeContainer = () => document.getElementById("recipe-container")
+
+
+DOMContentLoaded
+    buttonShow().addEventListener("click", handleClick)
+
+
+const handleClick = () => {
+  if (recipeContainer().children.length < 1) {
+    Recipe.fetchRecipes()
+  } else {
+    recipeContainer().innerHTML = ""
+  }
+}
+
+
+
+
+
+
+
+
+
+<button data-id="${this.id}">Delete</button>

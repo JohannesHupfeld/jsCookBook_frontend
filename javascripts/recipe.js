@@ -21,8 +21,11 @@ class Recipe { // class template for objects
     <p>${this.instructions}</p>
     <h3>Category</h3>
     <p>${this.category.name}</p>
+    </div>
+    <br></br>
     `
   } // this refers to recipe 
+
   // INDEX
   static fetchRecipes = () => { // displays recipes
     
@@ -39,9 +42,9 @@ class Recipe { // class template for objects
       })
     })
     .catch(err => alert(err))
-    
+
   }
-  
+
 } // this is an instance of recipe class, in debugger under prototype we have access to render
 
 Recipe.all = [] // recipe is an object so it can be given an all key and assigned to a blank array
